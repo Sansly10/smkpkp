@@ -11,6 +11,22 @@
     collapseShow = classes;
   }
 
+   // Status untuk mengontrol dropdown terbuka/tutup
+   let isDropdownOpen = false;
+        
+        // Ambil URL saat ini
+        let currentPath = window.location.pathname;
+      
+        // Fungsi untuk membuka/menutup dropdown hanya ketika diklik
+        function toggleDropdown() {
+          isDropdownOpen = !isDropdownOpen;
+        }
+      
+        // Membuka dropdown otomatis hanya jika halaman saat ini adalah salah satu item dalam dropdown
+        if (currentPath.includes('/admin/tables') || currentPath.includes('/admin/profile')) {
+          isDropdownOpen = true;
+        }
+        
   export let location;
 </script>
 
@@ -122,31 +138,78 @@
           </a>
         </li>
 
+        
+        <style>
+          .dropdown {
+            cursor: pointer;
+          }
+        
+          .submenu {
+            padding-left: 1rem;
+          }
+        
+          .submenu a {
+            color: #4a5568;
+            font-size: 0.875rem;
+            padding: 0.5rem 0;
+            display: block;
+          }
+        
+          .submenu a:hover {
+            color: #e53e3e;
+          }
+        
+          /* Warna khusus untuk item yang aktif */
+          .active {
+            color: #e53e3e;
+            font-weight: bold;
+          }
+        
+          /* Rotasi ikon dropdown */
+          .rotate-180 {
+            transform: rotate(180deg);
+          }
+        </style>
+        
+        <!-- Item Sidebar untuk Dropdown -->
         <li class="items-center">
-          <a
-            use:link
-            href="/admin/tables"
-            class="text-xs uppercase py-3 font-bold block {location.href.indexOf('/admin/tables') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
+          <!-- Tombol untuk dropdown dengan fungsi toggle -->
+          <div
+            class="dropdown text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"
+            on:click={toggleDropdown}
           >
-            <i
-              class="fas fa-table mr-2 text-sm {location.href.indexOf('/admin/tables') !== -1 ? 'opacity-75' : 'text-blueGray-300'}"
-            ></i>
-            Tables
-          </a>
+            <i class="fas fa-home mr-2 text-sm"></i>
+            Home
+            <i class="fas fa-chevron-down ml-2 {isDropdownOpen ? 'rotate-180' : ''}"></i>
+          </div>
+        
+          <!-- Submenu yang tampil ketika dropdown terbuka -->
+          {#if isDropdownOpen}
+            <ul class="submenu">
+              <li>
+                <a
+                  use:link
+                  href="/admin/tables"
+                  class="block {currentPath.includes('/admin/tables') ? 'active' : ''}"
+                >
+                  <i class="fas fa-table mr-2 text-sm"></i>
+                  Hero Banner
+                </a>
+              </li>
+              <li>
+                <a
+                  use:link
+                  href="/admin/profile"
+                  class="block {currentPath.includes('/admin/profile') ? 'active' : ''}"
+                >
+                  <i class="fas fa-smile mr-2 text-sm"></i>
+                  Greeting
+                </a>
+              </li>
+            </ul>
+          {/if}
         </li>
-
-        <li class="items-center">
-          <a
-            use:link
-            href="/admin/profile"
-            class="text-xs uppercase py-3 font-bold block {location.href.indexOf('/admin/profile') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
-          >
-            <i
-              class="fas fa-table mr-2 text-sm {location.href.indexOf('/admin/profile') !== -1 ? 'opacity-75' : 'text-blueGray-300'}"
-            ></i>
-            Profile sejarah
-          </a>
-        </li>
+        
 
         <li class="items-center">
           <a
