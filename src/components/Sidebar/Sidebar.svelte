@@ -138,6 +138,19 @@
         <li class="items-center">
           <a
             use:link
+            href="/admin/profile"
+            class="text-xs uppercase py-3 font-bold block {location.href.indexOf('/admin/profile') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
+          >
+            <i
+              class="fas fa-table mr-2 text-sm {location.href.indexOf('/admin/profile') !== -1 ? 'opacity-75' : 'text-blueGray-300'}"
+            ></i>
+            Profile sejarah
+          </a>
+        </li>
+
+        <li class="items-center">
+          <a
+            use:link
             href="/admin/maps"
             class="text-xs uppercase py-3 font-bold block {location.href.indexOf('/admin/maps') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
           >

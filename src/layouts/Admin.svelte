@@ -11,6 +11,7 @@
   import Dashboard from "views/admin/Dashboard.svelte";
   import Settings from "views/admin/Settings.svelte";
   import Tables from "views/admin/Tables.svelte";
+  import profileSejarah from "views/admin/profile/Sejarah.svelte";
   import Maps from "views/admin/Maps.svelte";
 
   export let location;
@@ -27,6 +28,7 @@
         <Route path="dashboard" component="{Dashboard}" />
         <Route path="settings" component="{Settings}" />
         <Route path="tables" component="{Tables}" />
+        <Route path="profile" component="{profileSejarah}" />
         <Route path="maps" component="{Maps}" />
       </Router>
       <FooterAdmin />
