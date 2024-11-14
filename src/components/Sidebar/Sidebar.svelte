@@ -23,10 +23,10 @@
         }
       
         // Membuka dropdown otomatis hanya jika halaman saat ini adalah salah satu item dalam dropdown
-        if (currentPath.includes('/admin/tables') || currentPath.includes('/admin/profile')) {
+        if (currentPath.includes('/admin/home/herobanner') || currentPath.includes('/admin/home/greeting')) {
           isDropdownOpen = true;
         }
-        
+
   export let location;
 </script>
 
@@ -189,8 +189,8 @@
               <li>
                 <a
                   use:link
-                  href="/admin/tables"
-                  class="block {currentPath.includes('/admin/tables') ? 'active' : ''}"
+                  href="/admin/home/herobanner"
+                  class="block {currentPath.includes('/admin/home/herobanner') ? 'active' : ''}"
                 >
                   <i class="fas fa-table mr-2 text-sm"></i>
                   Hero Banner
@@ -199,8 +199,8 @@
               <li>
                 <a
                   use:link
-                  href="/admin/profile"
-                  class="block {currentPath.includes('/admin/profile') ? 'active' : ''}"
+                  href="/admin/home/greeting"
+                  class="block {currentPath.includes('/admin/home/greeting') ? 'active' : ''}"
                 >
                   <i class="fas fa-smile mr-2 text-sm"></i>
                   Greeting
@@ -285,10 +285,10 @@
           <a
             use:link
             class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-            href="/profile"
+            href="/home/greeting"
           >
             <i class="fas fa-user-circle text-blueGray-300 mr-2 text-sm"></i>
-            Profile Page
+            home/greeting Page
           </a>
         </li>
       </ul>
